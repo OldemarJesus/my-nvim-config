@@ -8,6 +8,10 @@ Here I have integrated some:
 - Treesiter and Telescope
 - Much more
 
+## Requirements
+
+- Configure [ASDF Plugin](https://asdf-vm.com/guide/getting-started.html)
+- Configure NodeJS with asdf
 
 **Note**
 > Just to mention that I'm just starting with vim now.
