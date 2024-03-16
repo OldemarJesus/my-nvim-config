@@ -52,6 +52,8 @@ return {
                 capabilities = capabilities
             }
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+            vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, {})
+            vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, {})
         end
     },
 }
