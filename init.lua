@@ -1,9 +1,4 @@
-vim.cmd("set number")
-vim.cmd("set relativenumber")
-vim.cmd("set tabstop=4")
-vim.cmd("set shiftwidth=4")
-vim.cmd("set expandtab")
-vim.g.mapleader = " "
+require("vim-configs")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
