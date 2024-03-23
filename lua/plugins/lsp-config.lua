@@ -25,6 +25,8 @@ return {
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<C-e>'] = cmp.mapping.abort(),
                     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                    ['<Tab>'] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
+                    ['<S-Tab>'] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select}),
                 }),
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
@@ -40,19 +42,27 @@ return {
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "tsserver" }
+                ensure_installed = { "lua_ls", "tsserver", "gopls" }
             })
 
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require("lspconfig")
+
             -- setup for lua
             lspconfig.lua_ls.setup {
                 capabilities = capabilities
             }
+
             -- setup for javascript
             lspconfig.tsserver.setup {
                 capabilities = capabilities
             }
+
+            -- setup for go
+            lspconfig.gopls.setup {
+                capabilities = capabilities
+            }
+
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', '<leader>F', vim.lsp.buf.format, {})
             vim.keymap.set('n', '<leader>R', vim.lsp.buf.rename, {})
